@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://bcny23ongutou"]
+
+[ext_resource type="Texture2D" uid="uid://cnmxfk4gdjb6x" path="res://assets/table/pixil-frame-0 (1).png" id="1_gsn02"]
+[ext_resource type="Script" path="res://Gameplay.gd" id="1_qf82c"]
+[ext_resource type="Texture2D" uid="uid://c3h07sff0g86w" path="res://assets/table/pixil-frame-1.png" id="2_km3kb"]
+
+[sub_resource type="Curve" id="Curve_7daap"]
+min_value = -1.0
+_data = [Vector2(0.0212766, -1), 0.0, 2.04348, 0, 1, Vector2(1, 1), 2.04348, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_m4ory"]
+min_value = -1.0
+max_value = 0.0
+_data = [Vector2(0, -1), 0.0, 1.19607, 0, 1, Vector2(0.505319, -0.395604), 0.0, 0.0, 0, 0, Vector2(1, -1), -1.22179, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_0lkof"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.441489, 0.0109891), 0.0, 0.0, 0, 0, Vector2(0.601064, 0.0109891), 0.0, 0.0, 0, 0, Vector2(0.973404, -1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Animation" id="Animation_w30n4"]
+resource_name = "card_move_up"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q0n43"]
+_data = {
+"card_move_up": SubResource("Animation_w30n4")
+}
+
+[node name="Gameplay" type="Node2D"]
+script = ExtResource("1_qf82c")
+spread_curve = SubResource("Curve_7daap")
+height_curve = SubResource("Curve_m4ory")
+rotation_curve = SubResource("Curve_0lkof")
+
+[node name="table" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Pixil-frame-0(1)" type="Sprite2D" parent="table"]
+position = Vector2(969.5, 677.5)
+scale = Vector2(0.9745, 0.3965)
+texture = ExtResource("1_gsn02")
+
+[node name="Pixil-frame-1" type="Sprite2D" parent="table"]
+position = Vector2(944, 635)
+scale = Vector2(0.593145, 0.239273)
+skew = 0.165806
+texture = ExtResource("2_km3kb")
+
+[node name="deck" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 373.0
+offset_top = 318.0
+offset_right = 422.0
+offset_bottom = 358.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="deck"]
+libraries = {
+"": SubResource("AnimationLibrary_q0n43")
+}
