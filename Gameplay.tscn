@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcny23ongutou"]
+[gd_scene load_steps=8 format=3 uid="uid://bcny23ongutou"]
 
 [ext_resource type="Texture2D" uid="uid://cnmxfk4gdjb6x" path="res://assets/table/pixil-frame-0 (1).png" id="1_gsn02"]
 [ext_resource type="Script" path="res://Gameplay.gd" id="1_qf82c"]
 [ext_resource type="Texture2D" uid="uid://c3h07sff0g86w" path="res://assets/table/pixil-frame-1.png" id="2_km3kb"]
+[ext_resource type="Texture2D" uid="uid://damhvowqw67pp" path="res://assets/background_images/color.jpg" id="2_qt67l"]
 
 [sub_resource type="Curve" id="Curve_7daap"]
 min_value = -1.0
@@ -25,6 +26,11 @@ script = ExtResource("1_qf82c")
 spread_curve = SubResource("Curve_7daap")
 height_curve = SubResource("Curve_m4ory")
 rotation_curve = SubResource("Curve_0lkof")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1936.0
+offset_bottom = 1920.0
+texture = ExtResource("2_qt67l")
 
 [node name="table" type="Control" parent="."]
 layout_mode = 3
