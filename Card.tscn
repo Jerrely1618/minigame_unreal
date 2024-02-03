@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs6rac6k8yep6"]
+[gd_scene load_steps=13 format=3 uid="uid://cs6rac6k8yep6"]
 
 [ext_resource type="Script" path="res://Card.gd" id="1_alj4h"]
-[ext_resource type="Texture2D" uid="uid://damhvowqw67pp" path="res://assets/background_images/color.jpg" id="1_ecpgw"]
+[ext_resource type="Texture2D" uid="uid://ciriuuuwbdst8" path="res://assets/deck/background/democrat_background.png" id="2_m277y"]
+[ext_resource type="FontFile" uid="uid://dv6u3fwaxxeq3" path="res://assets/fonts/Peace Sans.otf" id="3_0rqr2"]
+[ext_resource type="Texture2D" uid="uid://dauncjpuvthn2" path="res://assets/deck/profiles/rump.png" id="3_85pmj"]
+[ext_resource type="Shader" path="res://Card.gdshader" id="4_j175m"]
+[ext_resource type="FontFile" uid="uid://d1fjic4rc40th" path="res://assets/fonts/Chiki-MVRZw.otf" id="6_g6c03"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mqyyu"]
-blend_mode = 1
+[sub_resource type="Animation" id="Animation_qxl43"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_kktoa"]
 resource_name = "card_move_up"
@@ -21,61 +25,209 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, -50)]
 }
 
+[sub_resource type="Animation" id="Animation_7ywcp"]
+resource_name = "popup"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Back_bckg:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ghp2u"]
+resource_name = "card_move_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -50), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mu0ts"]
 _data = {
-"card_move_up": SubResource("Animation_kktoa")
+"RESET": SubResource("Animation_qxl43"),
+"card_move_down": SubResource("Animation_ghp2u"),
+"card_move_up": SubResource("Animation_kktoa"),
+"popup": SubResource("Animation_7ywcp")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gdaqr"]
+shader = ExtResource("4_j175m")
+shader_parameter/rect_size = Vector2(47, 30)
 
 [node name="Card" type="Button"]
 offset_right = 8.0
 offset_bottom = 8.0
 script = ExtResource("1_alj4h")
 
-[node name="Background" type="TextureRect" parent="."]
-material = SubResource("CanvasItemMaterial_mqyyu")
+[node name="Front_bckg" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 394.0
-offset_bottom = 634.0
-texture = ExtResource("1_ecpgw")
+offset_left = -194.0
+offset_top = -315.0
+offset_right = 200.0
+offset_bottom = 319.0
+texture = ExtResource("2_m277y")
 expand_mode = 1
 
 [node name="Name" type="Label" parent="."]
+custom_minimum_size = Vector2(-3.915, 0)
 layout_mode = 0
-offset_left = 13.0
-offset_top = 10.0
-offset_right = 224.0
-offset_bottom = 83.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = -123.0
+offset_top = -267.0
+offset_right = 88.0
+offset_bottom = -194.0
+rotation = -0.0039358
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_0rqr2")
 theme_override_font_sizes/font_size = 50
 text = "Example"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_mu0ts")
 }
 
+[node name="Health" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_gdaqr")
+layout_mode = 0
+offset_left = -194.0
+offset_top = -315.0
+offset_right = -147.0
+offset_bottom = -268.0
+
+[node name="number" type="Label" parent="Health"]
+layout_mode = 0
+offset_right = 47.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stamina" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_gdaqr")
+layout_mode = 0
+offset_left = 154.0
+offset_top = -316.0
+offset_right = 201.0
+offset_bottom = -269.0
+
+[node name="number" type="Label" parent="Stamina"]
+layout_mode = 0
+offset_right = 47.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = -149.0
+offset_top = -194.0
+offset_right = 151.0
+offset_bottom = -34.0
+
+[node name="Profile" type="TextureRect" parent="PContainer"]
+layout_mode = 2
+texture = ExtResource("3_85pmj")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Party" type="Label" parent="."]
+layout_mode = 0
+offset_left = -151.0
+offset_top = -267.0
+offset_right = -14.0
+offset_bottom = -221.0
+rotation = -0.196802
+scale = Vector2(0.997419, 1.11095)
+theme_override_colors/font_color = Color(0.811765, 0.0588235, 0.254902, 1)
+theme_override_colors/font_shadow_color = Color(0.8, 0.0588235, 0.254902, 1)
+theme_override_colors/font_outline_color = Color(0.8, 0.0588235, 0.254902, 1)
+theme_override_fonts/font = ExtResource("6_g6c03")
+theme_override_font_sizes/font_size = 25
+text = "Party"
+vertical_alignment = 1
+
+[node name="Desc" type="Label" parent="."]
+layout_mode = 0
+offset_left = -145.0
+offset_top = -19.0
+offset_right = 150.0
+offset_bottom = 302.0
+theme_override_fonts/font = ExtResource("6_g6c03")
+theme_override_font_sizes/font_size = 30
+text = "Lorem ipsum dolor sit amet, 
+consectetur adipiscing elit. 
+"
+autowrap_mode = 2
+
 [node name="Info" type="Button" parent="."]
 layout_mode = 0
-offset_left = 325.0
-offset_top = 19.0
-offset_right = 381.0
-offset_bottom = 66.0
+offset_left = 93.0
+offset_top = -267.0
+offset_right = 146.0
+offset_bottom = -218.0
+toggle_mode = true
 
-[node name="Label" type="Label" parent="Info"]
+[node name="Text" type="Label" parent="Info"]
 layout_mode = 0
-offset_right = 56.0
-offset_bottom = 46.0
-theme_override_font_sizes/font_size = 30
+offset_right = 53.0
+offset_bottom = 49.0
+theme_override_font_sizes/font_size = 35
 text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="Back_bckg" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 395.0
-offset_right = 719.0
-offset_bottom = 129.0
+offset_left = -194.0
+offset_top = -315.0
+offset_right = 200.0
+offset_bottom = 319.0
+texture = ExtResource("2_m277y")
+expand_mode = 1
 
-[node name="Label" type="Label" parent="PanelContainer"]
-layout_mode = 2
-text = "Custom Description"
+[node name="Back_info" type="Label" parent="Back_bckg"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 40.0
+offset_right = 351.0
+offset_bottom = 592.0
+theme_override_fonts/font = ExtResource("6_g6c03")
+theme_override_font_sizes/font_size = 30
+text = "Lorem ipsum dolor sit amet, 
+consectetur adipiscing elit. 
+"
+autowrap_mode = 1

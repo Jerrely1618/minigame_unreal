@@ -1,0 +1,52 @@
+[
+  {
+	"Name": "Hillapy",
+	"Party": "Democrat",
+	"BackgroundImage": "res://assets/deck/background/democrat_background.png",
+	"Profile": "res://assets/deck/profiles/hillapy.png",
+	"Health": 65,
+	"Stamina": 60,
+	"Desc": "A seasoned politician known for resilience and diplomatic finesse.",
+	"Info_Text": "Hillapy's career spans several decades, marked by significant contributions to foreign policy and healthcare reform."
+  },
+  {
+	"Name": "AYOT",
+	"Party": "Democrat",
+	"BackgroundImage": "res://assets/deck/background/democrat_background.png",
+	"Profile": "res://assets/deck/profiles/ayot.png",
+	"Health": 65,
+	"Stamina": 60,
+	"Desc": "A rising star with a passion for social justice and environmental causes.",
+	"Info_Text": "AYOT has quickly gained popularity for their outspoken stance on climate change and economic inequality, rallying a new generation of voters."
+  },
+  {
+	"Name": "Rump",
+	"Party": "Republican",
+	"BackgroundImage": "res://assets/deck/background/republican_background.png",
+	"Profile": "res://assets/deck/profiles/rump.png",
+	"Health": 65,
+	"Stamina": 60,
+	"Desc": "A controversial figure with a knack for business and media.",
+	"Info_Text": "Rump's tenure is defined by economic reforms and a unique approach to governance, sparking debate across the political spectrum."
+  },
+  {
+	"Name": "Binen",
+	"Party": "Democrat",
+	"BackgroundImage": "res://assets/deck/background/democrat_background.png",
+	"Profile": "res://assets/deck/profiles/binen.png",
+	"Health": 65,
+	"Stamina": 60,
+	"Desc": "A veteran in politics with a focus on unity and recovery.",
+	"Info_Text": "Binen's approach emphasizes bipartisanship and healing, with a long history of service in various capacities."
+  },
+  {
+	"Name": "Fitch",
+	"Party": "Republican",
+	"BackgroundImage": "res://assets/deck/background/republican_background.png",
+	"Profile": "res://assets/deck/profiles/fitch.png",
+	"Health": 65,
+	"Stamina": 60,
+	"Desc": "Known for a strong stance on national security and fiscal conservatism.",
+	"Info_Text": "Fitch's policies prioritize defense, economic freedom, and reducing government spending, appealing to traditionalist values."
+  }
+]

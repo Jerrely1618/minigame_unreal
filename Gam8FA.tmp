@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bcny23ongutou"]
+[gd_scene load_steps=8 format=3 uid="uid://bcny23ongutou"]
 
 [ext_resource type="Texture2D" uid="uid://cnmxfk4gdjb6x" path="res://assets/table/pixil-frame-0 (1).png" id="1_gsn02"]
 [ext_resource type="Script" path="res://Gameplay.gd" id="1_qf82c"]
 [ext_resource type="Texture2D" uid="uid://c3h07sff0g86w" path="res://assets/table/pixil-frame-1.png" id="2_km3kb"]
 [ext_resource type="Texture2D" uid="uid://damhvowqw67pp" path="res://assets/background_images/color.jpg" id="2_qt67l"]
-[ext_resource type="AudioStream" uid="uid://bot7k5apm0vns" path="res://sound/background.mp3" id="5_4jqej"]
 
 [sub_resource type="Curve" id="Curve_7daap"]
 min_value = -1.0
@@ -29,11 +28,9 @@ height_curve = SubResource("Curve_m4ory")
 rotation_curve = SubResource("Curve_0lkof")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0, 0, 0.239216, 1)
-offset_right = 1928.0
-offset_bottom = 1079.0
+offset_right = 1936.0
+offset_bottom = 1920.0
 texture = ExtResource("2_qt67l")
-expand_mode = 2
 
 [node name="table" type="Control" parent="."]
 layout_mode = 3
@@ -42,13 +39,13 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Pixil-frame-0(1)" type="Sprite2D" parent="table"]
-position = Vector2(964.5, 677.5)
-scale = Vector2(0.9615, 0.3965)
+position = Vector2(969.5, 677.5)
+scale = Vector2(0.9745, 0.3965)
 texture = ExtResource("1_gsn02")
 
 [node name="Pixil-frame-1" type="Sprite2D" parent="table"]
-position = Vector2(958.653, 635)
-scale = Vector2(0.917468, 0.239273)
+position = Vector2(944, 635)
+scale = Vector2(0.593145, 0.239273)
 skew = 0.165806
 texture = ExtResource("2_km3kb")
 
@@ -59,8 +56,3 @@ offset_left = 481.0
 offset_top = 480.0
 offset_right = 530.0
 offset_bottom = 520.0
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_4jqej")
-volume_db = -17.19
-autoplay = true
